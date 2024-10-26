@@ -1,3 +1,5 @@
+<!-- index.html -->
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -6,6 +8,24 @@
     <title>Guess a number</title>
   </head>
   <body>
-    <script src="./main.js"></script>
+    <main class="game-section">
+      <section class="first-player-section">
+        <h2 class="hints-and-instructions">
+          Let the first player input the number to guess. It should be a number
+          between 0 and 50.
+        </h2>
+        <input type="number" id="first-player-input" min="0" max="50" />
+        <button id="first-player-button">Submit</button>
+      </section>
+      <section class="second-player-section" style="display: none">
+        <h2 class="hints-and-instructions">
+          Let the second player input their guess.
+        </h2>
+        <input type="number" id="second-player-input" min="0" max="50" />
+        <button id="second-player-button">Submit</button>
+        <button id="play-again-button" style="display: none;">Play again</button>
+      </section>
+    </main>
+    <script src="./index.js"></script>
   </body>
 </html>
