@@ -4,8 +4,6 @@ function askPlayerToInputNumber() {
     return numberGivenByPlayer;
 }
 
-const numberGivenByPlayer = askPlayerToInputNumber();
-
 const numberToGuess = 22;
 
 function checkIfPlayerGuessedTheNumber(numberGivenByPlayer) {
@@ -20,4 +18,9 @@ function checkIfPlayerGuessedTheNumber(numberGivenByPlayer) {
     }
 }
 
-checkIfPlayerGuessedTheNumber(numberGivenByPlayer);
+function playGame() {
+    const numberGivenByPlayer = askPlayerToInputNumber();
+    checkIfPlayerGuessedTheNumber(numberGivenByPlayer);
+}
+
+playGame();
