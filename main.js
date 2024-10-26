@@ -1,26 +1,104 @@
+let isThatSetupGameTime = true;
+
 function askPlayerToInputNumber() {
-    const numberGivenByPlayer = parseInt(prompt("Input a number: "));
-    console.log(`The number given by the player is: ${numberGivenByPlayer}`);
-    return numberGivenByPlayer;
+  const numberGivenByPlayer = parseInt(
+    prompt(
+      isThatSetupGameTime
+        ? "Let the first player input the number to guess."
+        : "Let the second player input their guess.",
+    ),
+  );
+  console.log(
+    isThatSetupGameTime
+      ? "The first player input the number to guess. Time for the second player to guess."
+      : `The second player input the number ${numberGivenByPlayer}.`,
+  );
+  return numberGivenByPlayer;
 }
 
-const numberToGuess = 22;
+function askFirstPlayerToInputNumberForSecondPlayerToGuess() {
+  const numberToGuessGivenByFirstPlayer = askPlayerToInputNumber();
+  return numberToGuessGivenByFirstPlayer;
+}
 
-function checkIfPlayerGuessedTheNumber(numberGivenByPlayer) {
-    if (numberGivenByPlayer === numberToGuess) {
-        console.log(`Congratulations! The number is indeed ${numberToGuess}`);
-    } else {
-        if (numberGivenByPlayer > numberToGuess) {
-            console.log(`The number is too high. Try again!`);
-        } else {
-            console.log(`The number is too low. Try again!`);
-        }
-    }
+function checkIfNumberToGuessGivenByFirstPlayerForSecondPlayerToGuessIsValid(
+  numberToGuessGivenByFirstPlayer,
+) {
+  if (
+    isNaN(numberToGuessGivenByFirstPlayer) ||
+    numberToGuessGivenByFirstPlayer < 0 ||
+    50 < numberToGuessGivenByFirstPlayer
+  ) {
+    console.log("The number to guess should be a number between 0 and 50.");
+    return false;
+  }
+
+  console.log(
+    "The number to guess is valid. Time for the second player to guess.",
+  );
+  isThatSetupGameTime = !isThatSetupGameTime;
+  return true;
+}
+
+function makeFirstPlayerSetupTheGame() {
+  let numberToGuessGivenByFirstPlayer =
+    askFirstPlayerToInputNumberForSecondPlayerToGuess();
+  while (
+    !checkIfNumberToGuessGivenByFirstPlayerForSecondPlayerToGuessIsValid(
+      numberToGuessGivenByFirstPlayer,
+    )
+  ) {
+    numberToGuessGivenByFirstPlayer =
+      askFirstPlayerToInputNumberForSecondPlayerToGuess();
+  }
+  return numberToGuessGivenByFirstPlayer;
+}
+
+function askSecondPlayerToInputTheirGuess() {
+  const guessNumberGivenBySecondPlayer = askPlayerToInputNumber();
+  return guessNumberGivenBySecondPlayer;
+}
+
+function checkIfSecondPlayerGuessedTheNumberGivenByFirstPlayer(
+  guessNumberGivenBySecondPlayer,
+  numberToGuessGivenByFirstPlayer,
+) {
+  if (guessNumberGivenBySecondPlayer === numberToGuessGivenByFirstPlayer) {
+    console.log(
+      `Congratulations! The number is indeed ${numberToGuessGivenByFirstPlayer}.`,
+    );
+    isThatSetupGameTime = !isThatSetupGameTime;
+    return true;
+  }
+
+  if (guessNumberGivenBySecondPlayer > numberToGuessGivenByFirstPlayer) {
+    console.log(`The number is too high. Try again!`);
+    return false;
+  }
+
+  console.log(`The number is too low. Try again!`);
+  return false;
+}
+
+function makeSecondPlayerGuessTheNumberGivenByFirstPlayer(
+  numberToGuessGivenByFirstPlayer,
+) {
+  let guessNumberGivenBySecondPlayer = askSecondPlayerToInputTheirGuess();
+  while (
+    !checkIfSecondPlayerGuessedTheNumberGivenByFirstPlayer(
+      guessNumberGivenBySecondPlayer,
+      numberToGuessGivenByFirstPlayer,
+    )
+  ) {
+    guessNumberGivenBySecondPlayer = askSecondPlayerToInputTheirGuess();
+  }
 }
 
 function playGame() {
-    const numberGivenByPlayer = askPlayerToInputNumber();
-    checkIfPlayerGuessedTheNumber(numberGivenByPlayer);
+  let numberToGuessGivenByFirstPlayer = makeFirstPlayerSetupTheGame();
+  makeSecondPlayerGuessTheNumberGivenByFirstPlayer(
+    numberToGuessGivenByFirstPlayer,
+  );
 }
 
 playGame();
