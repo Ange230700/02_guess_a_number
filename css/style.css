@@ -33,7 +33,7 @@
   margin-bottom: var(--medium-spacing);
 }
 
-input[type="number"] {
+input {
   width: 100%;
   padding: var(--small-spacing);
   font-size: var(--normal-font-size);

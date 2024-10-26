@@ -23,7 +23,14 @@ const playAgainButton = document.querySelector("#play-again-button");
 
 // Event listener for the first player's submit button
 firstPlayerButton.addEventListener("click", function () {
-  const numberToGuess = parseInt(firstPlayerInput.value, 10);
+  const firstPlayerInputValue = firstPlayerInput.value.trim();
+
+  if (!/^\d+$/.test(firstPlayerInputValue)) {
+    firstPlayerHints.innerText = "Please enter a valid number between 0 and 50.";
+    return;
+  }
+
+  const numberToGuess = parseInt(firstPlayerInputValue, 10);
 
   if (isNaN(numberToGuess) || numberToGuess < 0 || numberToGuess > 50) {
     firstPlayerHints.innerText =
@@ -40,6 +47,8 @@ firstPlayerButton.addEventListener("click", function () {
 
     secondPlayerHints.innerText = "Let the second player input their guess.";
     secondPlayerInput.value = "";
+
+    firstPlayerInput.value = "";
   }
 });
 
@@ -91,7 +100,7 @@ playAgainButton.addEventListener("click", function () {
 
   // Reset first player's section
   firstPlayerInput.value = "";
-  firstPlayerHints.textContent =
+  firstPlayerHints.innerText =
     "Let the first player input the number to guess. It should be a number between 0 and 50.";
 
   // Hide second player's section and show first player's section
