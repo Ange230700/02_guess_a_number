@@ -1,0 +1,25 @@
+{
+  "name": "02_guess_a_number",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "clean": "rm -rf ./node_modules ./dist package-lock.json",
+    "reboot": "npm run clean && npm install",
+    "prettier": "prettier --write . && prettier --check .",
+    "lint": "eslint . --fix",
+    "dev": "vite --host",
+    "start": "npm run reboot && npm run prettier && npm run lint && npm run dev"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@eslint/js": "^9.13.0",
+    "eslint": "^9.13.0",
+    "eslint-config-prettier": "^9.1.0",
+    "globals": "^15.11.0",
+    "prettier": "3.3.3",
+    "vite": "^5.4.10"
+  }
+}
