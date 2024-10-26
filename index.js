@@ -1,4 +1,4 @@
-// main.js
+// index.js
 
 let numberToGuessGivenByFirstPlayer;
 let numberOfAttempts;
@@ -36,7 +36,7 @@ firstPlayerButton.addEventListener("click", function () {
 
     // Hide first player's section and show second player's section
     firstPlayerSection.style.display = "none";
-    secondPlayerSection.style.display = "block";
+    secondPlayerSection.style.display = "flex";
 
     secondPlayerHints.innerText = "Let the second player input their guess.";
     secondPlayerInput.value = "";
@@ -82,7 +82,7 @@ secondPlayerButton.addEventListener("click", function () {
 });
 
 // Event listener for the play again button
-playAgainButton.addEventListener('click', function () {
+playAgainButton.addEventListener("click", function () {
   // Reset game state variables
   numberToGuessGivenByFirstPlayer = null;
   numberOfAttempts = 0;
@@ -90,17 +90,17 @@ playAgainButton.addEventListener('click', function () {
   maximumNumber = 50;
 
   // Reset first player's section
-  firstPlayerInput.value = '';
+  firstPlayerInput.value = "";
   firstPlayerHints.textContent =
-    'Let the first player input the number to guess. It should be a number between 0 and 50.';
+    "Let the first player input the number to guess. It should be a number between 0 and 50.";
 
   // Hide second player's section and show first player's section
-  secondPlayerSection.style.display = 'none';
-  firstPlayerSection.style.display = 'block';
+  secondPlayerSection.style.display = "none";
+  firstPlayerSection.style.display = "flex";
 
   // Reset second player's inputs and buttons
-  secondPlayerInput.value = '';
-  secondPlayerInput.style.display = 'inline';
-  secondPlayerButton.style.display = 'inline';
-  playAgainButton.style.display = 'none';
+  secondPlayerInput.value = "";
+  secondPlayerInput.style.display = "inline";
+  secondPlayerButton.style.display = "inline";
+  playAgainButton.style.display = "none";
 });

@@ -1,0 +1,65 @@
+/* css\style.css */
+
+/* === STYLE === */
+
+/* Main game section */
+.game-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: var(--large-spacing);
+  background-color: var(--primary-color-shade-3);
+}
+
+/* Player sections */
+.first-player-section,
+.second-player-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--primary-color-shade-4);
+  padding: var(--large-spacing);
+  border-radius: var(--medium-border-radius);
+  box-shadow: var(--medium-box-shadow);
+  max-width: 400px;
+  width: 100%;
+}
+
+.hints-and-instructions {
+  font-size: var(--large-font-size);
+  text-align: center;
+  margin-bottom: var(--medium-spacing);
+}
+
+input[type="number"] {
+  width: 100%;
+  padding: var(--small-spacing);
+  font-size: var(--normal-font-size);
+  border-radius: var(--small-border-radius);
+  margin-bottom: var(--medium-spacing);
+  border: 1px solid var(--primary-color-shade-5);
+  background-color: var(--primary-color-shade-3);
+  color: var(--primary-color-shade-7);
+}
+
+button {
+  background-color: var(--primary-color-shade-6);
+  color: var(--primary-color-shade-3);
+  padding: var(--small-spacing) var(--medium-spacing);
+  border-radius: var(--small-border-radius);
+  font-size: var(--normal-font-size);
+  font-weight: var(--font-weight-medium);
+  box-shadow: var(--small-box-shadow);
+  transition: background-color 0.3s ease;
+  margin-bottom: var(--small-spacing);
+}
+
+button:hover {
+  background-color: var(--primary-color-shade-7);
+}
+
+#play-again-button {
+  margin-top: var(--medium-spacing);
+}

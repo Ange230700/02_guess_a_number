@@ -1,0 +1,64 @@
+/* css\variables.css */
+
+:root {
+  /* === COLORS === */
+  --hue: 0;
+  --saturation: 0%;
+  --lightness: 10%;
+
+  --primary-color-shade-3: hsl(
+    var(--hue),
+    var(--saturation),
+    calc(var(--lightness) * 3)
+  );
+  --primary-color-shade-4: hsl(
+    var(--hue),
+    var(--saturation),
+    calc(var(--lightness) * 4)
+  );
+  --primary-color-shade-5: hsl(
+    var(--hue),
+    var(--saturation),
+    calc(var(--lightness) * 5)
+  );
+  --primary-color-shade-6: hsl(
+    var(--hue),
+    var(--saturation),
+    calc(var(--lightness) * 6)
+  );
+  --primary-color-shade-7: hsl(
+    var(--hue),
+    var(--saturation),
+    calc(var(--lightness) * 7)
+  );
+
+  /* === FONTS === */
+  --font-family: "Urbanist", sans-serif;
+
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+
+  --small-font-size: 0.875rem;
+  --normal-font-size: 1rem;
+  --large-font-size: 1.125rem;
+
+  /* === SPACING === */
+  --small-spacing: 0.5rem;
+  --medium-spacing: 0.75rem;
+  --large-spacing: 1rem;
+
+  /* === BORDER RADIUS === */
+  --small-border-radius: 0.25rem;
+  --medium-border-radius: 0.375rem;
+  --large-border-radius: 0.5rem;
+
+  /* === BOX SHADOW === */
+
+  --small-box-shadow: 0 0 0.25rem
+    hsla(var(--hue), var(--saturation), calc(var(--lightness) * 0), 0.1);
+  --medium-box-shadow: 0 0 0.375rem
+    hsla(var(--hue), var(--saturation), calc(var(--lightness) * 0), 0.1);
+  --large-box-shadow: 0 0 0.5rem
+    hsla(var(--hue), var(--saturation), calc(var(--lightness) * 0), 0.1);
+}

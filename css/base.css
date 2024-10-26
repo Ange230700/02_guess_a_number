@@ -1,0 +1,32 @@
+/* css\base.css */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-family);
+  color: var(--primary-color-shade-7);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-size: var(--normal-font-size);
+  line-height: 1.6;
+  background-color: var(--primary-color-shade-3);
+}
+
+button {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+input {
+  background-color: var(--primary-color-shade-3);
+  border: none;
+  outline: none;
+}
