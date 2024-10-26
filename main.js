@@ -60,6 +60,8 @@ function askSecondPlayerToInputTheirGuess() {
 }
 
 let NumberOfAttempts = 0;
+let minimumNumber = 0;
+let maximumNumber = 50;
 
 function checkIfSecondPlayerGuessedTheNumberGivenByFirstPlayer(
   guessNumberGivenBySecondPlayer,
@@ -77,11 +79,17 @@ function checkIfSecondPlayerGuessedTheNumberGivenByFirstPlayer(
   }
 
   if (guessNumberGivenBySecondPlayer > numberToGuessGivenByFirstPlayer) {
-    console.log(`The number is too high. Try again! Number of attempts: ${NumberOfAttempts}`);
+    maximumNumber = guessNumberGivenBySecondPlayer;
+    console.log(
+      `The number is too high. Try again! Surely now, the number is between ${minimumNumber} and ${maximumNumber}. Number of attempts: ${NumberOfAttempts}.`,
+    );
     return false;
   }
 
-  console.log(`The number is too low. Try again! Number of attempts: ${NumberOfAttempts}`);
+  minimumNumber = guessNumberGivenBySecondPlayer;
+  console.log(
+    `The number is too low. Try again! Surely now, the number is between ${minimumNumber} and ${maximumNumber}. Number of attempts: ${NumberOfAttempts}.`,
+  );
   return false;
 }
 
