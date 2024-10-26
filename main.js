@@ -59,24 +59,29 @@ function askSecondPlayerToInputTheirGuess() {
   return guessNumberGivenBySecondPlayer;
 }
 
+let NumberOfAttempts = 0;
+
 function checkIfSecondPlayerGuessedTheNumberGivenByFirstPlayer(
   guessNumberGivenBySecondPlayer,
   numberToGuessGivenByFirstPlayer,
 ) {
+  NumberOfAttempts++;
   if (guessNumberGivenBySecondPlayer === numberToGuessGivenByFirstPlayer) {
     console.log(
-      `Congratulations! The number is indeed ${numberToGuessGivenByFirstPlayer}.`,
+      NumberOfAttempts === 1
+        ? `Wow! Getting it in the first try! Congratulations! The number is indeed ${numberToGuessGivenByFirstPlayer}.`
+        : `Congratulations! The number is indeed ${numberToGuessGivenByFirstPlayer}. Number of attempts: ${NumberOfAttempts}`,
     );
     isThatSetupGameTime = !isThatSetupGameTime;
     return true;
   }
 
   if (guessNumberGivenBySecondPlayer > numberToGuessGivenByFirstPlayer) {
-    console.log(`The number is too high. Try again!`);
+    console.log(`The number is too high. Try again! Number of attempts: ${NumberOfAttempts}`);
     return false;
   }
 
-  console.log(`The number is too low. Try again!`);
+  console.log(`The number is too low. Try again! Number of attempts: ${NumberOfAttempts}`);
   return false;
 }
 
