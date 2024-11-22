@@ -31,6 +31,11 @@
     var(--saturation),
     calc(var(--lightness) * 7)
   );
+  --primary-color-shade-8: hsl(
+    var(--hue),
+    var(--saturation),
+    calc(var(--lightness) * 8)
+  );
 
   /* === FONTS === */
   --font-family: "Urbanist", sans-serif;

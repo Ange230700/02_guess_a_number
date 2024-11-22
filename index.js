@@ -26,7 +26,8 @@ firstPlayerButton.addEventListener("click", function () {
   const firstPlayerInputValue = firstPlayerInput.value.trim();
 
   if (!/^\d+$/.test(firstPlayerInputValue)) {
-    firstPlayerHints.innerText = "Please enter a valid number between 0 and 50.";
+    firstPlayerHints.innerText =
+      "Please enter a valid number between 0 and 50.";
     return;
   }
 
