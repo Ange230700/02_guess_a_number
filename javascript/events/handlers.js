@@ -99,17 +99,19 @@ const handleClickOnSecondPlayerButton = () => {
         `The number is too high. Try again! Surely now, the number is between ${globalVariables.minimumNumber} and ${globalVariables.maximumNumber}. Number of attempts: ${globalVariables.numberOfAttempts}.`,
       );
     } else {
-      globalVariables.minimumNumber = Math.max(
-        globalVariables.minimumNumber,
-        parseInt(document.querySelector("#second-player-input").value, 10),
+      setGlobalVariable(
+        "minimumNumber",
+        Math.max(
+          globalVariables.minimumNumber,
+          parseInt(document.querySelector("#second-player-input").value, 10),
+        ),
       );
 
-      document
-        .querySelector(".second-player-section")
-        .querySelector(
-          ".second-player-section .hints-and-instructions",
-        ).innerText =
-        `The number is too low. Try again! Surely now, the number is between ${globalVariables.minimumNumber} and ${globalVariables.maximumNumber}. Number of attempts: ${globalVariables.numberOfAttempts}.`;
+      printAppropriateInstructions(
+        ".second-player-section",
+        ".second-player-section .hints-and-instructions",
+        `The number is too low. Try again! Surely now, the number is between ${globalVariables.minimumNumber} and ${globalVariables.maximumNumber}. Number of attempts: ${globalVariables.numberOfAttempts}.`,
+      );
     }
 
     document.querySelector("#second-player-input").value = "";
