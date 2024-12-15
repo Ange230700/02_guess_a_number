@@ -5,6 +5,7 @@ import {
   createSecondPlayerSectionComponent,
 } from "../components/creations.js";
 import {
+  changeUIForAskingForRestart,
   changeUIForSecondPlayerTurn,
   emptyInputFields,
   printAppropriateInstructions,
@@ -14,7 +15,7 @@ import {
   checkIfUserInputIsValidNumber,
   setGlobalVariable,
 } from "../helpers/functions.js";
-import { globalVariables } from "../state/management.js";
+import { globalVariables, resetGameState } from "../state/management.js";
 
 const handleClickOnFirstPlayerButton = () => {
   if (checkIfUserInputIsValidNumber("#first-player-input") === false) {
@@ -78,9 +79,7 @@ const handleClickOnSecondPlayerButton = () => {
           ".second-player-section .hints-and-instructions",
         ).innerText += "\nUp for another round?";
 
-      document.querySelector("#second-player-input").style.display = "none";
-      document.querySelector("#second-player-button").style.display = "none";
-      document.querySelector("#play-again-button").style.display = "inline";
+      changeUIForAskingForRestart();
     } else if (
       parseInt(document.querySelector("#second-player-input").value, 10) >
       globalVariables.numberToGuessGivenByFirstPlayer
@@ -119,18 +118,14 @@ const handleClickOnSecondPlayerButton = () => {
 };
 
 const handleClickOnPlayAgainButton = () => {
-  // Reset game state variables
-  globalVariables.numberToGuessGivenByFirstPlayer = null;
-  globalVariables.numberOfAttempts = 0;
-  globalVariables.minimumNumber = 0;
-  globalVariables.maximumNumber = 50;
+  resetGameState();
 
-  // Reset first player's section
   document.querySelector("#first-player-input").value = "";
-  document
-    .querySelector(".first-player-section")
-    .querySelector(".first-player-section .hints-and-instructions").innerText =
-    "Let the first player input the number to guess. It should be a number between 0 and 50.";
+  printAppropriateInstructions(
+    ".first-player-section",
+    ".first-player-section .hints-and-instructions",
+    "Let the first player input the number to guess. It should be a number between 0 and 50.",
+  );
 
   // Hide second player's section and show first player's section
   document.querySelector(".second-player-section").style.display = "none";
