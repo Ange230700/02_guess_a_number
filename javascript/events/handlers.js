@@ -93,12 +93,11 @@ const handleClickOnSecondPlayerButton = () => {
         ),
       );
 
-      document
-        .querySelector(".second-player-section")
-        .querySelector(
-          ".second-player-section .hints-and-instructions",
-        ).innerText =
-        `The number is too high. Try again! Surely now, the number is between ${globalVariables.minimumNumber} and ${globalVariables.maximumNumber}. Number of attempts: ${globalVariables.numberOfAttempts}.`;
+      printAppropriateInstructions(
+        ".second-player-section",
+        ".second-player-section .hints-and-instructions",
+        `The number is too high. Try again! Surely now, the number is between ${globalVariables.minimumNumber} and ${globalVariables.maximumNumber}. Number of attempts: ${globalVariables.numberOfAttempts}.`,
+      );
     } else {
       globalVariables.minimumNumber = Math.max(
         globalVariables.minimumNumber,
