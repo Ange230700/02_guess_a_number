@@ -20,8 +20,15 @@ function emptyInputFields() {
   document.querySelector("#first-player-input").value = "";
 }
 
+function changeUIForAskingForRestart() {
+  document.querySelector("#second-player-input").style.display = "none";
+  document.querySelector("#second-player-button").style.display = "none";
+  document.querySelector("#play-again-button").style.display = "inline";
+}
+
 export {
   printAppropriateInstructions,
   changeUIForSecondPlayerTurn,
   emptyInputFields,
+  changeUIForAskingForRestart,
 };
