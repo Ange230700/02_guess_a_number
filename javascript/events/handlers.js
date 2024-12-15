@@ -6,6 +6,7 @@ import {
 } from "../components/creations.js";
 import {
   changeUIForAskingForRestart,
+  changeUIForFirstPlayerSetup,
   changeUIForSecondPlayerTurn,
   emptyInputFields,
   printAppropriateInstructions,
@@ -127,9 +128,7 @@ const handleClickOnPlayAgainButton = () => {
     "Let the first player input the number to guess. It should be a number between 0 and 50.",
   );
 
-  // Hide second player's section and show first player's section
-  document.querySelector(".second-player-section").style.display = "none";
-  document.querySelector(".first-player-section").style.display = "flex";
+  changeUIForFirstPlayerSetup();
 
   // Reset second player's inputs and buttons
   document.querySelector("#second-player-input").value = "";

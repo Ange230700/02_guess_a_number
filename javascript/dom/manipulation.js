@@ -10,6 +10,11 @@ function printAppropriateInstructions(
     .querySelector(instructionsSectionSelector).innerText = instructions;
 }
 
+function changeUIForFirstPlayerSetup() {
+  document.querySelector(".second-player-section").style.display = "none";
+  document.querySelector(".first-player-section").style.display = "flex";
+}
+
 function changeUIForSecondPlayerTurn() {
   document.querySelector(".first-player-section").style.display = "none";
   document.querySelector(".second-player-section").style.display = "flex";
@@ -28,6 +33,7 @@ function changeUIForAskingForRestart() {
 
 export {
   printAppropriateInstructions,
+  changeUIForFirstPlayerSetup,
   changeUIForSecondPlayerTurn,
   emptyInputFields,
   changeUIForAskingForRestart,
