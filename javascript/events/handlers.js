@@ -1,18 +1,18 @@
 // javascript\events\handlers.js
 
 import {
-  changeUIForAskingForRestart,
-  changeUIForFirstPlayerSetup,
+  setGameSectionHtmlContent,
+  printAppropriateInstructions,
   changeUIForSecondPlayerTurn,
   emptyInputFields,
-  printAppropriateInstructions,
+  changeUIForAskingForRestart,
+  changeUIForFirstPlayerSetup,
   resetSecondPlayerUI,
-  setGameSectionHtmlContent,
   waitForClickOnButtons,
 } from "../dom/manipulation.js";
 import {
-  checkIfNumberInputByFirstPlayerMeetsRequirements,
   checkIfUserInputIsValidNumber,
+  checkIfNumberInputByFirstPlayerMeetsRequirements,
   setGlobalVariable,
 } from "../helpers/functions.js";
 import { globalVariables, resetGameState } from "../state/management.js";
@@ -107,14 +107,14 @@ const handleClickOnSecondPlayerButton = () => {
       );
     }
 
-    document.querySelector("#second-player-input").value = "";
+    emptyInputFields();
   }
 };
 
 const handleClickOnPlayAgainButton = () => {
   resetGameState();
 
-  document.querySelector("#first-player-input").value = "";
+  emptyInputFields();
 
   printAppropriateInstructions(
     ".first-player-section",

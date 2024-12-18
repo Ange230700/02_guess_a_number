@@ -9,8 +9,8 @@ function checkIfUserInputIsValidNumber(inputSelector) {
 function checkIfNumberInputByFirstPlayerMeetsRequirements() {
   return (
     !isNaN(parseInt(document.querySelector("#first-player-input").value, 10)) &&
-    0 < parseInt(document.querySelector("#first-player-input").value, 10) &&
-    parseInt(document.querySelector("#first-player-input").value, 10) < 50
+    0 <= parseInt(document.querySelector("#first-player-input").value, 10) &&
+    parseInt(document.querySelector("#first-player-input").value, 10) <= 50
   );
 }
 

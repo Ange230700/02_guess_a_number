@@ -5,10 +5,10 @@ import {
   createSecondPlayerSectionComponent,
 } from "../components/creations.js";
 import {
+  handleGameSectionDisplay,
   handleClickOnFirstPlayerButton,
   handleClickOnPlayAgainButton,
   handleClickOnSecondPlayerButton,
-  handleGameSectionDisplay,
 } from "../events/handlers.js";
 
 function waitForLoadingOfDOMContent() {
@@ -51,8 +51,13 @@ function changeUIForFirstPlayerSetup() {
   document.querySelector(".first-player-section").style.display = "flex";
 }
 
-function resetSecondPlayerUI() {
+function emptyInputFields() {
   document.querySelector("#second-player-input").value = "";
+  document.querySelector("#first-player-input").value = "";
+}
+
+function resetSecondPlayerUI() {
+  emptyInputFields();
   document.querySelector("#second-player-input").style.display = "inline";
   document.querySelector("#second-player-button").style.display = "inline";
   document.querySelector("#play-again-button").style.display = "none";
@@ -61,11 +66,6 @@ function resetSecondPlayerUI() {
 function changeUIForSecondPlayerTurn() {
   document.querySelector(".first-player-section").style.display = "none";
   document.querySelector(".second-player-section").style.display = "flex";
-}
-
-function emptyInputFields() {
-  document.querySelector("#second-player-input").value = "";
-  document.querySelector("#first-player-input").value = "";
 }
 
 function changeUIForAskingForRestart() {
