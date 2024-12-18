@@ -3,27 +3,15 @@
 import { globalVariables } from "../state/management.js";
 
 function checkIfUserInputIsValidNumber(inputSelector) {
-  if (!/^\d+$/.test(document.querySelector(inputSelector).value.trim())) {
-    return false;
-  }
-
-  return true;
+  return /^\d+$/.test(document.querySelector(inputSelector).value);
 }
 
 function checkIfNumberInputByFirstPlayerMeetsRequirements() {
-  if (
-    isNaN(
-      parseInt(document.querySelector("#first-player-input").value.trim(), 10),
-    ) ||
-    parseInt(document.querySelector("#first-player-input").value.trim(), 10) <
-      0 ||
-    parseInt(document.querySelector("#first-player-input").value.trim(), 10) >
-      50
-  ) {
-    return false;
-  }
-
-  return true;
+  return (
+    !isNaN(parseInt(document.querySelector("#first-player-input").value, 10)) &&
+    0 < parseInt(document.querySelector("#first-player-input").value, 10) &&
+    parseInt(document.querySelector("#first-player-input").value, 10) < 50
+  );
 }
 
 function setGlobalVariable(key, value) {

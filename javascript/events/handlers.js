@@ -1,15 +1,14 @@
 // javascript\events\handlers.js
 
 import {
-  createFirstPlayerSectionComponent,
-  createSecondPlayerSectionComponent,
-} from "../components/creations.js";
-import {
   changeUIForAskingForRestart,
   changeUIForFirstPlayerSetup,
   changeUIForSecondPlayerTurn,
   emptyInputFields,
   printAppropriateInstructions,
+  resetSecondPlayerUI,
+  setGameSectionHtmlContent,
+  waitForClickOnButtons,
 } from "../dom/manipulation.js";
 import {
   checkIfNumberInputByFirstPlayerMeetsRequirements,
@@ -19,7 +18,7 @@ import {
 import { globalVariables, resetGameState } from "../state/management.js";
 
 const handleClickOnFirstPlayerButton = () => {
-  if (checkIfUserInputIsValidNumber("#first-player-input") === false) {
+  if (!checkIfUserInputIsValidNumber("#first-player-input")) {
     printAppropriateInstructions(
       ".first-player-section",
       ".first-player-section .hints-and-instructions",
@@ -28,7 +27,7 @@ const handleClickOnFirstPlayerButton = () => {
     return;
   }
 
-  if (checkIfNumberInputByFirstPlayerMeetsRequirements() === false) {
+  if (!checkIfNumberInputByFirstPlayerMeetsRequirements()) {
     printAppropriateInstructions(
       ".first-player-section",
       ".first-player-section .hints-and-instructions",
@@ -37,7 +36,7 @@ const handleClickOnFirstPlayerButton = () => {
   } else {
     setGlobalVariable(
       "numberToGuessGivenByFirstPlayer",
-      parseInt(document.querySelector("#first-player-input").value.trim(), 10),
+      parseInt(document.querySelector("#first-player-input").value, 10),
     );
 
     changeUIForSecondPlayerTurn();
@@ -53,7 +52,7 @@ const handleClickOnFirstPlayerButton = () => {
 };
 
 const handleClickOnSecondPlayerButton = () => {
-  if (checkIfUserInputIsValidNumber("#second-player-input") === false) {
+  if (!checkIfUserInputIsValidNumber("#second-player-input")) {
     printAppropriateInstructions(
       ".second-player-section",
       ".second-player-section .hints-and-instructions",
@@ -73,12 +72,6 @@ const handleClickOnSecondPlayerButton = () => {
           ? `Wow! Getting it in the first try! Congratulations! The number is indeed ${globalVariables.numberToGuessGivenByFirstPlayer}.`
           : `Congratulations! The number is indeed ${globalVariables.numberToGuessGivenByFirstPlayer}. Number of attempts: ${globalVariables.numberOfAttempts}`,
       );
-
-      document
-        .querySelector(".second-player-section")
-        .querySelector(
-          ".second-player-section .hints-and-instructions",
-        ).innerText += "\nUp for another round?";
 
       changeUIForAskingForRestart();
     } else if (
@@ -122,6 +115,7 @@ const handleClickOnPlayAgainButton = () => {
   resetGameState();
 
   document.querySelector("#first-player-input").value = "";
+
   printAppropriateInstructions(
     ".first-player-section",
     ".first-player-section .hints-and-instructions",
@@ -129,31 +123,12 @@ const handleClickOnPlayAgainButton = () => {
   );
 
   changeUIForFirstPlayerSetup();
-
-  // Reset second player's inputs and buttons
-  document.querySelector("#second-player-input").value = "";
-  document.querySelector("#second-player-input").style.display = "inline";
-  document.querySelector("#second-player-button").style.display = "inline";
-  document.querySelector("#play-again-button").style.display = "none";
+  resetSecondPlayerUI();
 };
 
 const handleGameSectionDisplay = () => {
-  document.querySelector(".game-section").innerHTML = `
-    ${createFirstPlayerSectionComponent()}
-    ${createSecondPlayerSectionComponent()}
-  `;
-
-  document
-    .querySelector("#first-player-button")
-    .addEventListener("click", handleClickOnFirstPlayerButton);
-
-  document
-    .querySelector("#second-player-button")
-    .addEventListener("click", handleClickOnSecondPlayerButton);
-
-  document
-    .querySelector("#play-again-button")
-    .addEventListener("click", handleClickOnPlayAgainButton);
+  setGameSectionHtmlContent();
+  waitForClickOnButtons();
 };
 
 export {

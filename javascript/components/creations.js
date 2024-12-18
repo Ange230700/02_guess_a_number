@@ -4,7 +4,7 @@ function createFirstPlayerSectionComponent() {
   return `
         <section class="first-player-section">
             <h2 class="hints-and-instructions">
-              Let the first player input the number to  guess. It should be a number between 0 and 50.
+              Let the first player input the number to guess. It should be a number between 0 and 50.
             </h2>
             <input type="password" id="first-player-input" />
             <button id="first-player-button">Submit</button>

@@ -1,5 +1,5 @@
 // index.js
 
-import { handleGameSectionDisplay } from "./javascript/events/handlers.js";
+import { waitForLoadingOfDOMContent } from "./javascript/dom/manipulation.js";
 
-document.addEventListener("DOMContentLoaded", handleGameSectionDisplay);
+waitForLoadingOfDOMContent();

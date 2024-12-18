@@ -1,2 +1,4 @@
 npx validate-branch-name
 npx lint-staged
+npx prettier .
+npx eslint .
